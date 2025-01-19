@@ -1,6 +1,13 @@
 <template>
     <lightning-card title="Opportunity Product" icon-name="standard:opportunity">
         <div class=slds-max-large-size_xx-large>
+            <template if:true={error}>
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture " role="contentinfo">
+
+                    <h2>Une erreur s'est produite lors du chargement des opportunités.</h2>
+                </div>
+            </template>
+            
             <template if:true={ifProducts}>
                 <lightning-datatable data={products}
                                      columns={columns}
@@ -17,12 +24,7 @@
                 <h2>    2.Selectionner ensuite les produit a ajouter.</h2>
                 </div>
             </template>
-                      <template if:true={error}>
-                        <div class="slds-notify slds-notify_alert slds-theme_alert-texture " role="contentinfo">
-                            <span class="slds-assistive-text">Erreur</span>
-                            <h2>Une erreur s'est produite lors du chargement des opportunités.</h2>
-                        </div>
-                    </template>
+                     
         </div>
     </lightning-card>
         </template>

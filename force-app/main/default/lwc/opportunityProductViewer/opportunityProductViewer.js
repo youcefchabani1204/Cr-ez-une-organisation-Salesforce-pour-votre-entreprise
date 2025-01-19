@@ -107,8 +107,10 @@ export default class OpportunityProductViewer extends NavigationMixin(LightningE
                 productName: item.Product2.Name, // Ajouter un champ à plat
                 quantityInStock: item.Product2.QuantityInStock__c, // Ajouter un champ à plat
                 
-                quantityColor: item.Quantity < 0 ? 'slds-text-color_error':'slds-text-color_success'
+                quantityColor: item.Quantity < item.Product2.QuantityInStock__c  ? 'slds-text-color_error':'slds-text-color_success'
+
                 }));
+             //   console.log('quantite mois quantie en stock ',(item.Quantity-item.Product2.QuantityInStock__c));
             this.ifProducts =data.length>0;
             this.error=null;
         } else if (error) {
