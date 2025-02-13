@@ -35,7 +35,8 @@ export default class OpportunityProductViewer extends NavigationMixin(LightningE
     @track products;
     @track ifProducts = false;  
     @track ifNegative = false;
-    @track error = {};
+    @api ifNeg=false;
+     @track error = {};
    
 
     basecolumns = [
@@ -98,7 +99,7 @@ export default class OpportunityProductViewer extends NavigationMixin(LightningE
             this.deleteProduct(row.Id); // Appeler la méthode pour supprimer
         }
        else if(actionName=='view_product'){
-            this.viewProduct(row.Id);
+            this.viewProduct(row.Product2Id);
 
         }
         
@@ -116,7 +117,7 @@ export default class OpportunityProductViewer extends NavigationMixin(LightningE
             type: 'standard__recordPage',
             attributes: {
                 recordId: productId,
-                objectApiName: 'OpportunityLineItem', // Nom de l'objet
+                objectApiName: 'Product2', // Nom de l'objet
                 actionName: 'view',
             },
         });
@@ -132,10 +133,11 @@ export default class OpportunityProductViewer extends NavigationMixin(LightningE
                 ...item,
                 productName: item.Product2.Name, // Ajouter un champ à plat
                 quantityInStock: item.Product2.QuantityInStock__c, // Ajouter un champ à plat
-                quantityColor: item.Quantity < item.Product2.QuantityInStock__c  ? 'slds-text-color_error':'slds-text-color_success',
+                quantityColor: item.Quantity > item.Product2.QuantityInStock__c  ? 'slds-text-color_error':'slds-text-color_success',
 
                 }));
-            this.ifNegative = this.products.some(product => product.Quantity < product.Product2.QuantityInStock__c);
+            this.ifNegative = this.products.some(product => product.Quantity > product.Product2.QuantityInStock__c);
+            this.ifNeg=this.ifNegative;
             this.ifProducts =data.length>0;
             this.error=null;
         } else if (error) {
@@ -143,5 +145,6 @@ export default class OpportunityProductViewer extends NavigationMixin(LightningE
             this.products = undefined;
         }
     }
-    
-    }
+   
+}
+   
