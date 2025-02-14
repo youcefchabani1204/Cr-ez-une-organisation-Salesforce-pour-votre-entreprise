@@ -3,8 +3,7 @@ public class UserProfileTest {
 
     @isTest
     public static void testCheckIfAdmin() {
-        Profile adminProfile = [SELECT Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1];
-
+        Profile adminProfile = [SELECT Id FROM Profile WHERE Name IN ('System Administrator', 'Administrateur système') LIMIT 1];
         User testUser = new User(
             FirstName = 'Test',
             LastName = 'Admin',
@@ -30,7 +29,7 @@ public class UserProfileTest {
 
     @isTest
     public static void testCheckIfNotAdmin() {
-        Profile standardProfile = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
+        Profile standardProfile = [SELECT Id FROM Profile WHERE Name IN ('Standard User','Commercial') LIMIT 1];
 
         User testUser = new User(
             FirstName = 'Test',
