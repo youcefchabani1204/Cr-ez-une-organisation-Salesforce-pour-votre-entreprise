@@ -14,7 +14,7 @@ public class UserProfileTest {
             TimeZoneSidKey = 'Europe/Paris',
             LocaleSidKey = 'fr_FR',
             EmailEncodingKey = 'UTF-8',
-            LanguageLocaleKey = 'EN_US',
+            LanguageLocaleKey = 'fr',
             ProfileId = adminProfile.Id,
             IsActive = true
         );
@@ -41,7 +41,7 @@ public class UserProfileTest {
             TimeZoneSidKey = 'Europe/Paris',
             LocaleSidKey = 'fr_FR',
             EmailEncodingKey = 'UTF-8',
-            LanguageLocaleKey = 'EN_US',
+            LanguageLocaleKey = 'fr',
             ProfileId = standardProfile.Id,
             IsActive = true
         );

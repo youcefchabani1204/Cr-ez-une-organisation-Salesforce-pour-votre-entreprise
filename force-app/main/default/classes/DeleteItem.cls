@@ -7,7 +7,6 @@ public with sharing class DeleteItem {
             delete oliToDelete;
         }
         catch(DMLException dmle){
-            System.debug('La suppression du produit a échoué : ' + dmle.getMessage());
             
             throw new AuraHandledException('Erreur lors de la suppression du produit.');
         }

@@ -5,6 +5,6 @@ public with sharing class UserProfile {
         User currentUser = [SELECT Id, Profile.Name FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
         
         // Comparer le nom du profil avec 'System Administrator'
-        return currentUser.Profile.Name == 'System Administrator';
+        return currentUser.Profile.Name == 'System Administrator'|| currentUser.Profile.Name == 'Administrateur système' ;
     }
 }
